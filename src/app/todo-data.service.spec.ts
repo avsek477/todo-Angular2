@@ -3,17 +3,12 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 import { Todo } from './todo';
 import { TodoDataService } from './todo-data.service';
-import { FormsModule } from '@angular/forms';
 
 
 describe('TodoDataService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        FormsModule
-      ],
       providers: [TodoDataService]
-
     });
   });
 
@@ -59,8 +54,8 @@ describe('#AddTodo', () => {
     service.addTodo(todo1);
     service.addTodo(todo2);
 
-    expect(service.getTooById(1)).toEqual(todo1);
-    expect(service.getTooById(2)).toEqual(todo2);
+    expect(service.getTodoById(1)).toEqual(todo1);
+    expect(service.getTodoById(2)).toEqual(todo2);
 
   }));
 })
@@ -140,7 +135,7 @@ describe('#UpdateTodoById', () => {
 
         expect(updatedTodo.status).toEqual(true);
 
-        service.ToggleTodoStatus(todo);
+        updatedTodo = service.ToggleTodoStatus(todo);
         expect(updatedTodo.status).toEqual(false);
     }));
 
